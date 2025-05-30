@@ -2,16 +2,16 @@
 import json
 import random
 from pathlib import Path
+import string
+
 
 #json is a light weight file that stores data in form of list and dictionary
+#our database that is json file is outside our code base,
+# in that case we need to go to the path of the json file each time we want to intreact with the json file.
+# so, we are creating a dummy data variable o store or fetch that data automatically when the code starts.
 
-"""
-our database that is json file is outside our code base, 
-in that case we need to go to the path of the json file each time we want to intreact with the json file.
-so, we are creating a dummy data variable o store or fetch that data automatically when the code starts.
-"""
-"""json.load,It reads JSON data from a file object (like a .json file) 
-and converts it into a Python data structure (like a dictionary or list)"""
+#json.load,It reads JSON data from a file object (like a .json file)
+# and converts it into a Python data structure (like a dictionary or list)
 
 
 class Bank:
@@ -27,14 +27,31 @@ class Bank:
                 data = json.loads(read)
         else:
             print("No Such File Exists")
-    except Exception as err:
-        print(f"error : {err}")
+    except FileNotFoundError:
+        print("File not found.")
+    except json.JSONDecodeError:
+        print("Error decoding JSON.")
+    except PermissionError:
+        print("Permission denied while reading the file.")
+    except OSError as e:
+        print(f"OS error: {e}")
 
-    @staticmethod
-    def update():
+    @classmethod
+    def __update(cls):
         """create to link information of the user to the json file"""
-        with open(Bank.database, 'w', encoding = "utf-8") as fs:
+        with open(cls.database, 'w', encoding = "utf-8") as fs:
             fs.write(json.dumps(Bank.data))
+
+    @classmethod
+    def __accountgenerate(cls):
+        """create a account generation function to create random account number"""
+        alpha = random.choices(string.ascii_letters, k = 3)
+        num = random.choices(string.digits, k = 3)
+        spchar = random.choices("!@#$%^&*", k =1)
+        id_ = alpha + num + spchar
+        random.shuffle(id_)
+        return "".join(id_)
+
 
 
     def createaccount(self):
@@ -45,7 +62,7 @@ class Bank:
             "Email": input("Please, Tell me your email:- "),
             "Address":input("Please, Tell me Your Address:- "),
             "Transaction_Pin": int(input("Please Setup 4 digit TPin:- ")),
-            "Account_number": 8894,
+            "Account_number": Bank.__accountgenerate(),
             "Balance": 0
         }
         if info["age"] < 18:
@@ -57,9 +74,9 @@ class Bank:
         else:
             print("Account Created Successfully, Please Note Down your Account Number")
             for i, values in info.items():
-                print(f"Your Details are {i}: {values}")
+                print(f"{i}: {values}")
             Bank.data.append(info) #appending the info into the data variable(dummy data)
-            Bank.update()
+            Bank.__update()
 
 user = Bank()
 
@@ -71,7 +88,7 @@ print("Press 4 to check your Details")
 print("press 5 to update Your Detail")
 print("Press 6 to delete Your Account\n")
 
-check = int(input("What would you like to do, sir ? :- "))
+check = int(input("What would you like to do, sir/mam ? :- "))
 
 if check == 1:
     user.createaccount()
