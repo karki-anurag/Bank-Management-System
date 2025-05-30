@@ -1,2 +1,1 @@
-[{"name": "anurag karki", "age": 20, "Email": "anuragkarki@gmail.com", "Address": "sallaghari", "Transaction_Pin": 1234, "Account_number": 0, "Balance": 0},
-{"name": "Laxmi Khanal", "age": 22, "Email": "laxmi@gmail.com", "Address": "Ekantakuna", "Transaction_Pin": 7895, "Account_number": 0, "Balance": 0}]
+[{"name": "anurag karki", "age": 20, "Email": "anuragkarki@gmail.com", "Address": "sallaghari", "Transaction_Pin": 1234, "Account_number": 0, "Balance": 0}, {"name": "Laxmi Khanal", "age": 22, "Email": "laxmi@gmail.com", "Address": "Ekantakuna", "Transaction_Pin": 7895, "Account_number": 0, "Balance": 0}, {"name": "Akriti Karki", "age": 19, "Email": "akriti@gmail.com", "Address": "dhanusha", "Transaction_Pin": 7894, "Account_number": 0, "Balance": 0}]

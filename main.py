@@ -42,10 +42,10 @@ class Bank:
         info = {
             "name": input("Please, Tell me your name:- "),
             "age" : int(input("Please, Tell me your age:- ")),
-            "Email": input("Please, Tell me your email sir:- "),
+            "Email": input("Please, Tell me your email:- "),
             "Address":input("Please, Tell me Your Address:- "),
             "Transaction_Pin": int(input("Please Setup 4 digit TPin:- ")),
-            "Account_number": 0000,
+            "Account_number": 8894,
             "Balance": 0
         }
         if info["age"] < 18:
@@ -62,7 +62,6 @@ class Bank:
             Bank.update()
 
 user = Bank()
-
 
 print("Welcome to Sunrise Bank Limited\n")
 print("Press 1 to Create an Account With us")
