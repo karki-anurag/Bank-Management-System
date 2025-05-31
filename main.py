@@ -77,6 +77,25 @@ class Bank:
                 print(f"{i}: {values}")
             Bank.data.append(info) #appending the info into the data variable(dummy data)
             Bank.__update()
+        
+    def depositemoney(self):
+        """This function helps the user to deposite money."""
+        accnumber = input("Please, Tell me your account number:- ")
+        tpin = int(input("please, Tell me your Transaction Pin :- "))
+        deepcopy = [i for i in Bank.data if i['Account_number'] == accnumber and i['Transaction_Pin'] == tpin ]
+        if deepcopy == []:
+            print("no such data found")
+        else:
+            amount = int(input("How much you want to Deposite:- "))
+            if amount >10000 and amount < 0:
+                print("Please enter valid amount within 10000 range")
+            else:
+                deepcopy[0]['Balance'] += amount
+                Bank.__update()
+                print(f"{amount} Amount Deposited successfully")
+
+
+
 
 user = Bank()
 
@@ -92,3 +111,6 @@ check = int(input("What would you like to do, sir/mam ? :- "))
 
 if check == 1:
     user.createaccount()
+
+if check == 2:
+    user.depositemoney()
