@@ -1,1 +1,47 @@
-[{"name": "Laxmi Khanal", "age": 22, "Email": "laxmi@gmail.com", "Address": "Ekantakuna", "Transaction_Pin": 7895, "Account_number": "ABc5#12", "Balance": 0}, {"name": "Akriti Karki", "age": 19, "Email": "akriti@gmail.com", "Address": "dhanusha", "Transaction_Pin": 7894, "Account_number": "XyZA@3G", "Balance": 0}, {"name": "Anshu Shrestha", "age": 23, "Email": "anshushrestha@gmail.com", "Address": "Sallaghari", "Transaction_Pin": 1111, "Account_number": "5NYN04@", "Balance": 18000}, {"name": "Roheet mandal", "age": 55, "Email": "rohit@gmail.com", "Address": "Sallaghari", "Transaction_Pin": 7895, "Account_number": "79S&NJ5", "Balance": 14000}]
+[
+    {
+        "name": "Laxmi Khanal",
+        "age": 22,
+        "Email": "laxmi@gmail.com",
+        "Address": "Ekantakuna",
+        "Transaction_Pin": 7895,
+        "Account_number": "ABc5#12",
+        "Balance": 0
+    },
+    {
+        "name": "Akriti Karki",
+        "age": 19,
+        "Email": "akriti@gmail.com",
+        "Address": "dhanusha",
+        "Transaction_Pin": 7894,
+        "Account_number": "XyZA@3G",
+        "Balance": 0
+    },
+    {
+        "name": "Anshu Shrestha",
+        "age": 23,
+        "Email": "anshushrestha@gmail.com",
+        "Address": "Sallaghari",
+        "Transaction_Pin": 1111,
+        "Account_number": "5NYN04@",
+        "Balance": 18000
+    },
+    {
+        "name": "Roheet mandal",
+        "age": 55,
+        "Email": "rohit@gmail.com",
+        "Address": "Sallaghari",
+        "Transaction_Pin": 7895,
+        "Account_number": "79S&NJ5",
+        "Balance": 14000
+    },
+    {
+        "name": "Anurag Karki",
+        "age": 22,
+        "Email": "anuragkarki2004@gmail.com",
+        "Address": "Sallaghari",
+        "Transaction_Pin": 1973,
+        "Account_number": "ITG042&",
+        "Balance": 5000
+    }
+]

@@ -1,12 +1,8 @@
 """Module for using json Liabries"""
-from hmac import new
 import json
 import random
 from pathlib import Path
 import string
-
-from httpx import delete
-
 
 #json is a light weight file that stores data in form of list and dictionary
 #our database that is json file is outside our code base,
