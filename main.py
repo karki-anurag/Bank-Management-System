@@ -1,4 +1,5 @@
 """Module for using json Liabries"""
+from hmac import new
 import json
 import random
 from pathlib import Path
@@ -118,15 +119,85 @@ class Bank:
 
         deepcopy = [i for i in Bank.data if i['Account_number']== accnum and i['Transaction_Pin'] == tpin]
         if deepcopy == []:
-            print("No Such Data Found")
-            
+            print("No Such Data Found")     
         else:
             for i in deepcopy[0]:
                 print(f"{i}: {deepcopy[0][i]}")
+
+    def updatedetails(self):
+        """This function helps to update details of the users"""
+        accnum = input("Please, tell me your account number:- ")
+        tpin = int(input("Please Tell me yout Transaction pin:- "))
+        deepcopy = [i for i in Bank.data if i['Account_number']== accnum and i['Transaction_Pin'] == tpin]
+        if deepcopy == []:
+            print("No Such Data Found")
+        else:
+            for i in deepcopy[0]:
+                print(f"{i}: {deepcopy[0][i]}")
+        #this will update data on by one
+        # update = input("What do you want to update :- ")
+        # print(update)
+        # if update == 'name' or update == 'Name':
+        #     name_update = input("What do you want as your new name:- ")
+        #     deepcopy[0]['name'] = name_update
+        #     Bank.__update()
+        #     print("Updated successfully")
+        # elif update == 'Address' or update == 'address':
+        #     address_update = input("What do you want as your new Address:- ")
+        #     deepcopy[0]['Address'] = address_update
+        #     Bank.__update()
+        #     print("Updated successfully")
+        # elif update == 'Email' or update == 'email':
+        #     email_update = input("What do you want as your new Email:- ")
+        #     deepcopy[0]['Email'] = email_update
+        #     Bank.__update()
+        #     print("Updated successfully")
+        # elif update == 'Transaction_Pin' or update == 'Tpin':
+        #     tpin_update = int(input("What do you want as your new Tpin:- "))
+        #     deepcopy[0]['Transaction_Pin'] = tpin_update
+        #     Bank.__update()
+        #     print("Updated successfully")
+        # else:
+        #     print("Please Follow the Naming convenction")
+
+        #For updating data all by once
+        print("Please update you inforamtion as you need")
+        newdata = {
+            "name" : input("please enter the new name or press enter to skip:- "),
+            "Email": input("Please Enter the new Email or press enter to skip:-"),
+            "Address" : input("Please enter the new address or press enter to skip:- "),
+            "Transaction_Pin": int(input("please enter the new Tpin or press enter to skip:- "))
+        }
+        if newdata['name'] == "":
+            newdata['name'] = deepcopy[0]['name']
+        if newdata['Email'] == "":
+            newdata['Email'] = deepcopy[0]['Email']
+        if newdata['Address'] == "":
+            newdata['Address'] = deepcopy[0]['Address']
+        if newdata['Transaction_Pin'] == "":
+            newdata['Transaction_Pin'] = deepcopy[0]['Transaction_Pin']
+        newdata['age'] = deepcopy[0]['age']
+        newdata['Balance'] = deepcopy[0]['Balance']
+        newdata['Account_number'] = deepcopy[0]['Account_number']
+        #we are doing this because, we are passing  newdata as dummy data during update
+
+        if type(newdata['Transaction_Pin']) == str:
+            newdata['Transaction_Pin'] = int(newdata['Transaction_Pin'])
+
+        #This goes through each key and value in the newdata dictionary.
+        #First round: key is 'name', value is 'roheet'
+        for key, value in newdata.items():
+            if value == deepcopy[0][key]:
+                continue
+            else:
+                deepcopy[0][key] = value
+            Bank.__update()
+            print("Details Update successfully")
+
+
             
-
-
-
+            
+        
 user = Bank()
 
 print("Welcome to Sunrise Bank Limited\n")
@@ -150,3 +221,6 @@ if check == 3:
 
 if check == 4:
     user.details()
+
+if check == 5:
+    user.updatedetails()
