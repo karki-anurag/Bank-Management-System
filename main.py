@@ -93,7 +93,37 @@ class Bank:
                 deepcopy[0]['Balance'] += amount
                 Bank.__update()
                 print(f"{amount} Amount Deposited successfully")
+    def withdrarmoney(self):
+        """This function helps to withdraw money."""
+        accnum = input("Please, tell me your account number:- ")
+        tpin = int(input("Please Tell me yout Transaction pin:- "))
 
+        deepcopy = [i for i in Bank.data if i['Account_number']== accnum and i['Transaction_Pin'] == tpin]
+
+        if deepcopy == []:
+            print("No such data found")
+        else:
+            print(f"Your Balance is :- {deepcopy[0]['Balance']} ")
+            withdraw = int(input("How much you want to withdraw:-"))
+            if withdraw > 10000 and withdraw < 0:
+                print("please enter a valid amount between 0 to 10000")
+            else:
+                deepcopy[0]['Balance'] -= withdraw
+                Bank.__update()
+                print(f"Amount {withdraw} Withdrawed Successfully")
+    def details(self):
+        """This function will help the user to see their details"""
+        accnum = input("Please, tell me your account number:- ")
+        tpin = int(input("Please Tell me yout Transaction pin:- "))
+
+        deepcopy = [i for i in Bank.data if i['Account_number']== accnum and i['Transaction_Pin'] == tpin]
+        if deepcopy == []:
+            print("No Such Data Found")
+            
+        else:
+            for i in deepcopy[0]:
+                print(f"{i}: {deepcopy[0][i]}")
+            
 
 
 
@@ -114,3 +144,9 @@ if check == 1:
 
 if check == 2:
     user.depositemoney()
+
+if check == 3:
+    user.withdrarmoney()
+
+if check == 4:
+    user.details()
