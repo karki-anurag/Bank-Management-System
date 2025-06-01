@@ -5,6 +5,8 @@ import random
 from pathlib import Path
 import string
 
+from httpx import delete
+
 
 #json is a light weight file that stores data in form of list and dictionary
 #our database that is json file is outside our code base,
@@ -193,11 +195,24 @@ class Bank:
                 deepcopy[0][key] = value
             Bank.__update()
             print("Details Update successfully")
+    
+    def acc_delete(self):
+        """This Function will delete the user data"""
+        accnum = input("Please, tell me your account number:- ")
+        tpin = int(input("Please Tell me yout Transaction pin:- "))
+        deepcopy = [i for i in Bank.data if i['Account_number']== accnum and i['Transaction_Pin'] == tpin]
+        if deepcopy == []:
+            print("No Such Data Found")
+        else:
+            conform = input("press 'Y' to delete or 'N' for ternimation of the process :-")
+            if conform == 'n' or conform == 'N':
+                print("Process Terminated successfully")
+            else:
+                index_of_data = Bank.data.index(deepcopy[0])
+                Bank.data.pop(index_of_data)
+                Bank.__update()
+                print("data deleted successfully")
 
-
-            
-            
-        
 user = Bank()
 
 print("Welcome to Sunrise Bank Limited\n")
@@ -224,3 +239,6 @@ if check == 4:
 
 if check == 5:
     user.updatedetails()
+
+if check == 6:
+    user.acc_delete()
